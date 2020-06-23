@@ -46,7 +46,7 @@ class GUI:
         print("Captured img")
 
     def initModel(self):
-        self.model = tensorflow.keras.models.load_model('keras_model.h5')
+        self.model = tensorflow.keras.models.load_model('../facial detection/Recognition/ModelData/keras_model.h5')
 
     def classify(self):
         data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)

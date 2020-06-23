@@ -8,7 +8,7 @@ from PIL import ImageOps, Image
 vc = cv2.VideoCapture(0)
 
 # Load the model
-model = tensorflow.keras.models.load_model('keras_model.h5')
+model = tensorflow.keras.models.load_model('../facial detection/Recognition/ModelData/keras_model.h5')
 # Load an image
 ret, frame = vc.read()
 im_pil = Image.fromarray(frame)
