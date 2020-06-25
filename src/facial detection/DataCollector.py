@@ -2,6 +2,7 @@
 import sys
 sys.path.append('.')
 
+import cv2
 
 from tkinter import *
 from Recognition.FacialRecognition import Recognizer, save
@@ -12,6 +13,7 @@ class gui:
         tk.title("Training data collection")
         self.tk.geometry("300x100")
         self.tk.resizable(0, 0)
+        self.vs = cv2.VideoCapture(0)
 
         self.reco = Recognizer()
 
@@ -27,11 +29,12 @@ class gui:
         self.cancelButton.pack(side=RIGHT)
 
     def captureButtonCommand(self):
-        self.reco.findandcrop()
-        folderName = self.dataLabel.get()
-        save(folderName, f"face{self.counter}", self.reco.getcropped())
-        self.counter += 1
-        print("Cap")
+        for i in range(0, 10):
+            self.reco.findandcrop(self.vs.read()[1])
+            folderName = self.dataLabel.get()
+            save(folderName, f"face{self.counter}", self.reco.getcropped())
+            self.counter += 1
+            print("capped")
 
     def cancelButtonCommand(self):
         self.counter = 0
