@@ -19,7 +19,7 @@ class Recognizer:
         return self.cropped
 
     def findandcrop(self, img):
-        cascade = cv2.CascadeClassifier('~/opencv/data/haarcascade/haarcascade_frontalface_default.xml')
+        cascade = cv2.CascadeClassifier('/home/gabe/opencv/data/haarcascade/haarcascade_frontalface_default.xml')
         tmp = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         rect = cascade.detectMultiScale(tmp, scaleFactor=1.1, minNeighbors=5)
         for (x, y, h, w) in rect:
