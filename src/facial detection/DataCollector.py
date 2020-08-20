@@ -13,8 +13,6 @@ class gui:
         tk.title("Training data collection")
         self.tk.geometry("300x100")
         self.tk.resizable(0, 0)
-        self.vs = cv2.VideoCapture(0)
-
         self.reco = Recognizer()
 
         self.counter = 0
@@ -29,19 +27,25 @@ class gui:
         self.cancelButton.pack(side=RIGHT)
 
     def captureButtonCommand(self):
+        self.vs = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
         for i in range(0, 10):
-            self.reco.findandcrop(self.vs.read()[1])
+            im = self.vs.read()[1]
+            cv2.waitKey(30)
+            self.reco.findandcrop(im)
             folderName = self.dataLabel.get()
             save(folderName, f"face{self.counter}", self.reco.getcropped())
             self.counter += 1
             print("capped")
+        im = self.vs.read()[1]
+        save(folderName, f"headshot", im)
+        self.vs.release()
 
     def cancelButtonCommand(self):
         self.counter = 0
         self.dataLabel.delete(0, "end")
 
-
-root = Tk()
-window = gui(root)
-root.mainloop()
-exit(0)
+if __name__ == "__main__":
+    root = Tk()
+    window = gui(root)
+    root.mainloop()
+    exit(0)
