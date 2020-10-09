@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/LearningTeachableMachine.iml" filepath="$PROJECT_DIR$/.idea/LearningTeachableMachine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Yulanda-App/.idea/Yulanda-App.iml" filepath="$PROJECT_DIR$/../Yulanda-App/.idea/Yulanda-App.iml" />
     </modules>
   </component>
 </project>
